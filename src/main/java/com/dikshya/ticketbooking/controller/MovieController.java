@@ -24,6 +24,7 @@ public class MovieController {
     public Movie addMovie(@RequestBody Movie movie) {
         return movieService.addMovie(movie);
     }
+
     public MovieService getEmployeeService() {
 
         return movieService;
@@ -33,16 +34,24 @@ public class MovieController {
     public ResponseEntity<Movie> getMovieById(@PathVariable("id") Long movieId) {
         return new ResponseEntity<Movie>(movieService.getMovieByID(movieId), HttpStatus.OK);
     }
+
     @PutMapping("{id}")
-    public ResponseEntity<Movie> updateMovie(@PathVariable("id")Long id ,
-                                                   @RequestBody Movie movie) {
+    public ResponseEntity<Movie> updateMovie(@PathVariable("id") Long id,
+                                             @RequestBody Movie movie) {
 
         return new ResponseEntity<Movie>(movieService.UpdateMovie(movie, id), HttpStatus.OK);
     }
+
     @GetMapping()
-    public ResponseEntity<List<Movie>>  getAllMovies(){
-        return  new ResponseEntity<>(movieService.getAllMovies(),HttpStatus.OK);
+    public ResponseEntity<List<Movie>> getAllMovies() {
+        return new ResponseEntity<>(movieService.getAllMovies(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteMovie(@PathVariable("id") Long id) {
+        movieService.deleteMovie(id);
+
     }
 
 
-    }
+}
