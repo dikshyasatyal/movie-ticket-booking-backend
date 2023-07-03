@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/movie")
 public class MovieController {
@@ -36,6 +38,10 @@ public class MovieController {
                                                    @RequestBody Movie movie) {
 
         return new ResponseEntity<Movie>(movieService.UpdateMovie(movie, id), HttpStatus.OK);
+    }
+    @GetMapping()
+    public ResponseEntity<List<Movie>>  getAllMovies(){
+        return  new ResponseEntity<>(movieService.getAllMovies(),HttpStatus.OK);
     }
 
 

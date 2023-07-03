@@ -54,6 +54,9 @@ public class MovieService {
         return existingMovie;
     }
 
+    public void deleteMovie(Long id){
+        movieRepository.deleteById(id);
+    }
 
 }
 
